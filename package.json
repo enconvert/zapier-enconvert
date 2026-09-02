@@ -1,0 +1,30 @@
+{
+  "name": "enconvert-zapier",
+  "version": "1.0.0",
+  "description": "Zapier integration for the EnConvert API: convert files, render web pages into agent-ready data, and crawl sites into RAG-ready chunks.",
+  "type": "module",
+  "main": "./dist/index.js",
+  "exports": "./dist/index.js",
+  "private": true,
+  "license": "MIT",
+  "engines": {
+    "node": ">=18.20"
+  },
+  "scripts": {
+    "clean": "rimraf ./dist ./build",
+    "build": "npm run clean && tsc",
+    "_zapier-build": "npm run build",
+    "validate": "zapier-platform validate",
+    "test": "tsc --noEmit",
+    "push": "zapier-platform push"
+  },
+  "dependencies": {
+    "form-data": "^4.0.0",
+    "zapier-platform-core": "19.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.0",
+    "rimraf": "^5.0.10",
+    "typescript": "5.6.2"
+  }
+}
