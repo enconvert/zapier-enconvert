@@ -5,9 +5,13 @@ All notable changes to the EnConvert Zapier integration are documented in this f
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project
 adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased]
+## [1.1.0] - 2026-09-17
 
 ### Added
+
+- **Perceive URL** exposes `is_blocked` and `billed` as output fields. A detected content-free block is
+  a normal success with `is_blocked` true, empty outputs and `billed` false; `billed` is also false when
+  the render-quality deductions include `http_error` or `login_wall`.
 
 - Two hidden dropdown triggers, **List of Watchers** (`GET /v2/watch`) and **List of Ingest Jobs**
   (`GET /v2/ingest`). They never appear in the Zap editor; they exist only to populate the Watcher and
@@ -18,6 +22,7 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - The **Watcher ID** and **Job ID** input fields are now labelled **Watcher** and **Ingest Job** and
   render as dropdowns instead of asking users to paste an ID. The wire keys (`watcher_id`, `job_id`)
   are unchanged, so existing Zaps keep working.
+- README: deploy steps are inlined; the link to the removed `zapier-enconvert-deploy/` folder is gone.
 
 ## [1.0.0] - 2026-08-27
 

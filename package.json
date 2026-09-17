@@ -1,6 +1,6 @@
 {
   "name": "enconvert-zapier",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Zapier integration for the EnConvert API: convert files, render web pages into agent-ready data, and crawl sites into RAG-ready chunks.",
   "type": "module",
   "main": "./dist/index.js",

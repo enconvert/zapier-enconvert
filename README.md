@@ -7,9 +7,9 @@ RAG-ready chunks, and monitor pages for changes, all from one connection inside 
 Every page render carries a `render_quality` score from 0.0 to 1.0, so a blocked or empty page comes back
 flagged rather than being mistaken for real content.
 
-> **To deploy this integration to your Zapier account and (optionally) publish it, follow the
-> step-by-step guide in the sibling folder
-> [`zapier-enconvert-deploy/`](../zapier-enconvert-deploy/README.md).**
+Every **Perceive URL** step also returns `is_blocked` and `billed`: a detected content-free block is a
+normal success with `is_blocked` true, no artifacts and `billed` false, so a Filter step on
+`render_quality >= 0.4` and `is_blocked` is false keeps bad reads out of the rest of the Zap.
 
 ## What it does
 
@@ -74,12 +74,26 @@ npm run build     # compiles TypeScript to dist/
 npm run validate  # zapier-platform validate (structural + schema checks)
 ```
 
+## Deploy
+
+The app id (`245566`) is pinned in `.zapierapprc`; the version pushed is `package.json`'s.
+
+```bash
+npm i -g zapier-platform-cli   # provides the zapier-platform binary
+zapier-platform login          # once per machine
+npm ci && npm run build && npm run validate
+zapier-platform push           # uploads this version to the app
+zapier-platform promote 1.1.0  # makes it the version new Zaps use
+```
+
+To move from invite-only to the public Zapier app directory, open the app at
+<https://developer.zapier.com/app/245566/publishing> and submit it for review.
+
 Requires Node.js 18.20 or newer. Built on `zapier-platform-core` 19. The CLI binary is `zapier-platform`
 (the legacy `zapier` binary was removed in v19).
 
 ## Resources
 
-- **Deploy and publish guide**: [`zapier-enconvert-deploy/`](../zapier-enconvert-deploy/README.md)
 - EnConvert integration guide: <https://www.enconvert.com/docs/guides/integrations/zapier>
 - EnConvert API documentation: <https://www.enconvert.com/docs/introduction>
 - Zapier Platform CLI: <https://docs.zapier.com/platform/reference/cli-docs>
